@@ -232,3 +232,50 @@ class JSONIndexer(IndexerContract):
                 filtered.append(result)
 
         return filtered
+
+    def load_index(self) -> Dict:
+        """
+        加载索引（公开方法）
+
+        Returns:
+            Dict: 索引数据
+        """
+        return self._load_index()
+
+    def save_index(self, index: Dict) -> bool:
+        """
+        保存索引（公开方法）
+
+        Args:
+            index: 索引数据
+
+        Returns:
+            bool: 成功返回True
+        """
+        try:
+            self._save_index(index)
+            return True
+        except Exception:
+            return False
+
+    def list_projects(self) -> List[Dict]:
+        """
+        列出所有已解析项目
+
+        Returns:
+            List[Dict]: 项目列表
+        """
+        index = self._load_index()
+        projects = []
+
+        for name, data in index.get("projects", {}).items():
+            projects.append({
+                "name": name,
+                "type": data.get("type"),
+                "language": data.get("language"),
+                "patterns_count": data.get("patterns_count", 0),
+                "mental_models_count": data.get("mental_models_count", 0),
+                "analysis_date": data.get("analysis_date")
+            })
+
+        return projects

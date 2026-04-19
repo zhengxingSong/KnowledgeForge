@@ -4,6 +4,67 @@
 
 ---
 
+## v0.3.0 - Phase 2 完成
+
+> **发布日期:** 2026-04-19
+> **Git Tag:** v0.3.0
+> **Commit:** Phase 2 验收通过
+
+### 完成内容
+
+#### Phase 2 新增功能
+| 文件 | 功能 | 说明 |
+|------|------|------|
+| `mcp/server.py` | KnowledgeForgeMCPServer | MCP服务器实现 |
+| `analysis/blast_radius.py` | BlastRadiusAnalyzer | 影响范围分析 |
+| `verification/test_verify.py` | VerifyRunner | 测试验证运行器 |
+| `tests/test_phase2.py` | Phase 2验收测试 | 20个测试 |
+
+### 核心功能
+
+**MCP服务器**
+- MCP协议实现
+- 工具定义: forge_project, query_patterns, blast_radius, get_evidence, list_projects
+- Claude Desktop/Cursor集成配置生成
+
+**BlastRadius分析**
+- 模式影响范围分析
+- 相关模块检测
+- 相关模式相似度计算
+- 风险等级评估
+
+**Verify验证**
+- 测试执行验证
+- 置信度提升机制
+- 测试成功率计算
+
+### 测试结果
+
+| 测试套件 | 测试数 | 结果 |
+|----------|--------|------|
+| Phase 0 | 24 | ✅ 全部通过 |
+| Phase 1 | 26 | ✅ 全部通过 |
+| Phase 2 | 20 | ✅ 全部通过 |
+| **总计** | **70** | **✅ 全部通过** |
+
+### CLI命令新增
+
+| 命令 | 功能 |
+|------|------|
+| `blast-radius <pattern_id>` | 分析模式影响范围 |
+| `verify <pattern_id>` | 运行测试验证模式 |
+| `install --mcp` | 安装MCP服务器配置 |
+
+### 下一步
+
+Phase 3 规划：
+- WebVisualizer实现
+- 完整CLI命令
+- 真实项目测试
+- 产品化发布
+
+---
+
 ## v0.2.0 - Phase 1 完成
 
 > **发布日期:** 2026-04-19
