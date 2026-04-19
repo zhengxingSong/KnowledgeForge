@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-0.1.0-orange)](https://github.com/zhengxingSong/KnowledgeForge/releases)
+[![Version](https://img.shields.io/badge/Version-0.2.0-orange)](https://github.com/zhengxingSong/KnowledgeForge/releases)
 
 ## 🎯 项目能做什么？
 
@@ -118,9 +118,11 @@ knowledgeforge/
 | **心智模型提取** | Phase 0 | ✅ 已实现 | 文档分析 + 结构推断 |
 | **本地存储** | Phase 0 | ✅ 已实现 | Markdown + JSON 格式 |
 | **CLI命令** | Phase 0 | ✅ 已实现 | forge/query/list |
-| **tree-sitter解析** | Phase 1 | 🔜 待开发 | AST解析、零LLM消耗、23+语言 |
-| **置信度系统** | Phase 1 | 🔜 待开发 | 5级置信度标注、证据链 |
-| **增量解析** | Phase 1 | 🔜 待开发 | SHA256缓存、80%计算减少 |
+| **LanguageConfig** | Phase 1 | ✅ 已实现 | 23+语言配置与检测 |
+| **TreeSitterParser** | Phase 1 | ✅ 已实现 | AST解析、函数/类提取 |
+| **CacheManager** | Phase 1 | ✅ 已实现 | SHA256缓存、增量解析 |
+| **置信度系统** | Phase 1 | ✅ 已实现 | 5级置信度标注、证据链 |
+| **tree-sitter解析** | Phase 1 | ✅ 已实现 | AST解析、零LLM消耗、23+语言 |
 | **MCP集成** | Phase 2 | 🔜 待开发 | Claude Desktop/Cursor集成 |
 | **影响范围分析** | Phase 2 | 🔜 待开发 | blast-radius 分析 |
 | **Web可视化** | Phase 3 | 🔜 待开发 | 知识图谱、交互界面 |
