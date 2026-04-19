@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-0.2.0-orange)](https://github.com/zhengxingSong/KnowledgeForge/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.0-orange)](https://github.com/zhengxingSong/KnowledgeForge/releases)
 
 ## 🎯 项目能做什么？
 

@@ -4,6 +4,68 @@
 
 ---
 
+## v1.0.0 - Phase 3 完成 (正式发布)
+
+> **发布日期:** 2026-04-19
+> **Git Tag:** v1.0.0
+> **Commit:** Phase 3 验收通过
+
+### 完成内容
+
+#### Phase 3 新增功能
+| 文件 | 功能 | 说明 |
+|------|------|------|
+| `defaults/web_visualizer.py` | WebVisualizer | HTML可视化生成 |
+| `cli/main.py` (更新) | visualize命令 | 生成Web可视化 |
+| `cli/main.py` (更新) | version命令 | 显示版本信息 |
+
+### 核心功能
+
+**WebVisualizer**
+- 静态HTML文件生成
+- Pattern卡片展示
+- Mental Model卡片展示
+- CSS样式内嵌
+- JS交互支持
+
+**CLI命令完整**
+- forge: 解析项目
+- query: 搜索知识
+- list: 列出项目
+- blast-radius: 影响范围分析
+- verify: 测试验证
+- install: MCP安装
+- visualize: 生成可视化
+- version: 显示版本
+
+### 真实项目测试
+
+| 项目 | 模式数 | 心智模型数 | 结果 |
+|------|--------|------------|------|
+| codeflow | 0 | 1 | ✅ 解析成功 |
+| claude-code | 1 | 86 | ✅ 解析成功 |
+| KnowledgeForge自身 | 1 | 12 | ✅ 解析成功 |
+
+### 测试结果
+
+| 测试套件 | 测试数 | 结果 |
+|----------|--------|------|
+| Phase 0 | 24 | ✅ 全部通过 |
+| Phase 1 | 26 | ✅ 全部通过 |
+| Phase 2 | 20 | ✅ 全部通过 |
+| **总计** | **70** | **✅ 全部通过** |
+
+### 功能验证
+
+所有CLI命令验证：
+- ✅ `forge`: 解析项目成功
+- ✅ `query`: 搜索知识成功
+- ✅ `visualize`: 生成HTML成功
+- ✅ `blast-radius`: 影响分析成功
+- ✅ `version`: 版本显示成功
+
+---
+
 ## v0.3.0 - Phase 2 完成
 
 > **发布日期:** 2026-04-19

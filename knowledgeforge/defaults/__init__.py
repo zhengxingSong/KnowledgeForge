@@ -12,6 +12,13 @@ Phase 1 新增：
 - LanguageConfig: 23+语言配置
 - TreeSitterParser: tree-sitter AST解析
 - CacheManager: SHA256缓存管理
+
+Phase 2 新增：
+- (analysis模块独立)
+- (verification模块独立)
+
+Phase 3 新增：
+- WebVisualizer: HTML可视化生成
 """
 
 from knowledgeforge.defaults.parser import DefaultParser
@@ -24,6 +31,9 @@ from knowledgeforge.defaults.indexer import JSONIndexer
 from knowledgeforge.defaults.language_config import LanguageConfig, get_language_config
 from knowledgeforge.defaults.tree_sitter_parser import TreeSitterParser
 from knowledgeforge.defaults.cache_manager import CacheManager, get_cache_manager
+
+# Phase 3 新增
+from knowledgeforge.defaults.web_visualizer import WebVisualizer, get_web_visualizer
 
 __all__ = [
     # Phase 0
@@ -38,4 +48,7 @@ __all__ = [
     "TreeSitterParser",
     "CacheManager",
     "get_cache_manager",
+    # Phase 3
+    "WebVisualizer",
+    "get_web_visualizer",
 ]

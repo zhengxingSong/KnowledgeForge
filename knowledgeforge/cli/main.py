@@ -76,6 +76,14 @@ def main():
     install_parser.add_argument('--platform', type=str, default='claude', choices=['claude', 'cursor'], help='目标平台')
     install_parser.add_argument('--config-path', type=str, help='配置文件保存路径')
 
+    # visualize 命令 (Phase 3)
+    viz_parser = subparsers.add_parser('visualize', help='生成Web可视化')
+    viz_parser.add_argument('--output', type=str, default='knowledge_output/visuals', help='输出目录')
+    viz_parser.add_argument('--project', type=str, help='项目名称（使用已有知识库）')
+
+    # version 命令
+    version_parser = subparsers.add_parser('version', help='显示版本信息')
+
     args = parser.parse_args()
 
     if args.command is None:
@@ -95,6 +103,10 @@ def main():
             return _handle_verify(args)
         elif args.command == 'install':
             return _handle_install(args)
+        elif args.command == 'visualize':
+            return _handle_visualize(args)
+        elif args.command == 'version':
+            return _handle_version(args)
         else:
             parser.print_help()
             return 1
@@ -237,6 +249,62 @@ def _handle_install(args) -> int:
 
     print("使用 --mcp 参数安装为MCP服务器")
     return 1
+
+
+def _handle_visualize(args) -> int:
+    """处理 visualize 命令"""
+    from knowledgeforge.defaults.web_visualizer import get_web_visualizer
+
+    visualizer = get_web_visualizer()
+    output_dir = Path(args.output)
+
+    if args.project:
+        print(f"生成可视化: {args.project}")
+        print(f"输出目录: {output_dir}")
+
+        visualizer.output_dir = output_dir
+        html_path = visualizer.generate_visualization_from_index()
+
+        print(f"\n可视化已生成!")
+        print(f"HTML文件: {html_path}")
+        print(f"\n打开浏览器访问: file://{html_path}")
+
+    else:
+        # 从最近解析的项目生成
+        from knowledgeforge.defaults import JSONIndexer
+
+        indexer = JSONIndexer()
+        index = indexer.load_index()
+
+        if not index.get("patterns"):
+            print("错误: 知识库中没有模式数据")
+            print("请先使用 'forge' 命令解析项目")
+            return 1
+
+        print(f"生成知识库可视化")
+        print(f"输出目录: {output_dir}")
+
+        visualizer.output_dir = output_dir
+        html_path = visualizer.generate_visualization_from_index()
+
+        print(f"\n可视化已生成!")
+        print(f"HTML文件: {html_path}")
+
+    return 0
+
+
+def _handle_version(args) -> int:
+    """处理 version 命令"""
+    print("KnowledgeForge v0.3.0")
+    print("开源项目知识锻造系统")
+    print()
+    print("Phase 状态:")
+    print("  Phase 0: ✅ 完成 (骨架基础功能)")
+    print("  Phase 1: ✅ 完成 (tree-sitter解析、置信度系统)")
+    print("  Phase 2: ✅ 完成 (MCP、blast-radius)")
+    print("  Phase 3: 🔄 进行中 (可视化、产品化)")
+
+    return 0
 
 
 def _handle_forge(args) -> int:
